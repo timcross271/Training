@@ -1,12 +1,6 @@
 #Factorial - Done
 #Make a function, then integrate with other codes - done
 
-
-
-
-
-
-
 def mult (a,b):
     mult_result=0
     counter=0

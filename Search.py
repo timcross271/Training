@@ -1,6 +1,21 @@
-#Search within a list
-#If it is in the list or not, and what position
 
-#Find the Difference in Age between Oldest and Youngest Family Members
+#Find the names position
 
-#Integer verification
+
+mylist=["Tim","Marika","John","Sarah","Diane","Tim","Barry"]
+search=input("Enter name:")
+search_count=0
+
+
+for name in mylist:
+	if name==search:
+		search_count=search_count+1
+
+if search_count>=1:
+	print("The name was found",search_count,"times")
+else:
+	print("The name was not found")
+
+    
+
+
