@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pylab as pl
 
-input_data=np.loadtxt('data_for_linear_regression.txt')
+input_data=np.loadtxt('data_for_linear_regression_1000.txt')
 
 #print(input_data[:,1])
 
