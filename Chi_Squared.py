@@ -18,26 +18,27 @@ for number in input_data[:,0]:
         min=number
 print(min)
 
+#Number and bins and bin size
 bin_number=int(input('Please enter number of bins '))
 bin_size=(max-min)/bin_number
 print(bin_size)
 
-for p in range(bin_number):
-    bin[p]=min+bin_size
+#Create a list of all the edge points, distance between them is bin_size
+#Each time you add bin_size to previous number then append to list
 
-#Edge list or array creation
-    
-    
-    
-
-
-
+bin_list=[]
+for p in range(bin_number+1):
+    bin_list.append(min+(bin_size*p))
+print(bin_list)
 
 
 #Find all data points in each bin
+#Between bin_list[1] and bin_list[2], how many data points in input_data are there
 
 #Find mean of x for each bin
 #Find mean of f(x) for each bin
+    
+
 #Find standard deviation of f(x) for each bin (average distance from mean - error bar)
 #Make new data vector - binned mean x, mean f(x), standard deviation
 #Plot error bar
