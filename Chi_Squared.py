@@ -83,8 +83,6 @@ pl.show()
 
     
 
- 
-
 #Create a function for Chi Squared
 #- Gets distance between data and theory(best fit) weighted with error bars, smaller bars, less error, more significance
 
