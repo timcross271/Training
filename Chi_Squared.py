@@ -97,24 +97,33 @@ b=np.linspace(4,5,n_grid)
 A,B=np.meshgrid(a,b)
 A=A.flatten()
 B=B.flatten()
-# print(A)
-# print(B)
 
 
 #Make line, and then a list of theory values
-a=-1
-b=4
+#Calculate chi sqaured for theory values
+
+
 t_list=[]
 x=new_data[:,0]
-for number in x:
-    t=linear(a,b,number)
-    t_list.append(t)
-# t_list=linear(a,b,x)
-print(t_list)
+c_list=[]
+c_total=0
+for number_A,number_B in zip(A,B):
+    t_list=linear(number_A,number_B,x)
+    for number in range(bin_number):
+        c=chi_squared(t_list[number],new_data[number,1],new_data[number,2])
+        c_total=c_total+c
+    c_list.append(c_total)
+lowest=c_list[0]
+for number in c_list:
+    if lowest>number:
+        lowest=number
+print('Lowest Chi Squared', lowest)
 
-#Calculate chi sqaured for theory values
-for number in range(bin_number):
-    c=chi_squared(t_list[number],new_data[number,1],new_data[number,2])
+#######################################################################
+#TODO
+#Find the index position (A,B) of lowest Chi Squared
+#Draw line
+#######################################################################
     
 
 #pl.plot(new_data[:,0],new_data[:,1])
