@@ -92,8 +92,8 @@ def linear(a,b,x):
 #Make list of possible a and b values
 
 n_grid=10
-a=np.linspace(-1,-2,n_grid)
-b=np.linspace(4,5,n_grid)
+a=np.linspace(-2,-1,n_grid)
+b=np.linspace(5,4,n_grid)
 A,B=np.meshgrid(a,b)
 A=A.flatten()
 B=B.flatten()
@@ -102,31 +102,37 @@ B=B.flatten()
 #Make line, and then a list of theory values
 #Calculate chi sqaured for theory values
 
-
+position=0
 t_list=[]
 x=new_data[:,0]
 c_list=[]
-c_total=0
+
 for number_A,number_B in zip(A,B):
+    c_total=0
     t_list=linear(number_A,number_B,x)
     for number in range(bin_number):
         c=chi_squared(t_list[number],new_data[number,1],new_data[number,2])
         c_total=c_total+c
     c_list.append(c_total)
 lowest=c_list[0]
-for number in c_list:
+for p,number in enumerate(c_list):
     if lowest>number:
-        lowest=number
+        lowest=number 
+        position=p
 print('Lowest Chi Squared', lowest)
+print(A[position])
+print(B[position])
+
+
+
 
 #######################################################################
 #TODO
-#Find the index position (A,B) of lowest Chi Squared
 #Draw line
 #######################################################################
     
 
-#pl.plot(new_data[:,0],new_data[:,1])
+pl.plot(new_data[:,0],new_data[:,1])
 # pl.scatter(input_data[:,0],input_data[:,1],label='Data',marker='x',c='g')
 # pl.errorbar(new_data[:,0],new_data[:,1],yerr=np.sqrt(new_data[:,2]),c='b')
 # pl.plot(new_data[:,0],t_list,c='r')
@@ -134,4 +140,4 @@ print('Lowest Chi Squared', lowest)
 # pl.ylabel('f(X)')
 # pl.legend()
 # pl.savefig('data_cs.jpg')
-# pl.show()
+pl.show()
