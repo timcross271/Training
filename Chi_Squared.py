@@ -137,3 +137,7 @@ pl.ylabel('f(X)')
 pl.legend()
 # pl.savefig('data_cs.jpg')
 pl.show()
+
+#************************************
+#TODO
+#Compare Chi Squared Result with Linear Regression
