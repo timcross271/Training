@@ -48,7 +48,7 @@ print(B[best_fit])
       
 
 pl.plot(x,y)
-pl.scatter(input_data[:,0],input_data[:,1],label='Data',marker='x',c='g')
+#pl.scatter(input_data[:,0],input_data[:,1],label='Data',marker='x',c='g')
 pl.xlabel('X')
 pl.ylabel('f(X)')
 pl.legend()

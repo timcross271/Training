@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pylab as pl
 
-input_data=np.loadtxt('data_for_linear_regression.txt')
+input_data=np.loadtxt('data_for_linear_regression_1000.txt')
 
 #Define range of bins
 
@@ -123,21 +123,17 @@ print('Lowest Chi Squared', lowest)
 print(A[position])
 print(B[position])
 
+x=new_data[:,0]
+y=linear(A[position],B[position],x)
 
-
-
-#######################################################################
-#TODO
-#Draw line
-#######################################################################
-    
-
-pl.plot(new_data[:,0],new_data[:,1])
-# pl.scatter(input_data[:,0],input_data[:,1],label='Data',marker='x',c='g')
-# pl.errorbar(new_data[:,0],new_data[:,1],yerr=np.sqrt(new_data[:,2]),c='b')
+pl.title('Chi Squared Fitting to f(x)=ax+b, a='+str(round(A[position],2))+' b='+str(round(B[position],2)))
+#pl.plot(new_data[:,0],new_data[:,1])
+pl.scatter(input_data[:,0],input_data[:,1],marker='x',c='g',alpha=0.5,label='Data')
+pl.plot(x,y,c='k',label='Theory')
+pl.errorbar(new_data[:,0],new_data[:,1],yerr=np.sqrt(new_data[:,2]),c='r',ls='none',markersize=4,marker='o',capsize=5,alpha=0.7,label='Binned data')
 # pl.plot(new_data[:,0],t_list,c='r')
-# pl.xlabel('X')
-# pl.ylabel('f(X)')
-# pl.legend()
+pl.xlabel('X')
+pl.ylabel('f(X)')
+pl.legend()
 # pl.savefig('data_cs.jpg')
 pl.show()
