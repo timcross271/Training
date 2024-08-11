@@ -1,7 +1,9 @@
 import numpy as np
 import matplotlib.pylab as pl
+import time
 
-input_data=np.loadtxt('data_for_linear_regression_1000.txt')
+start_time = time.time()
+input_data=np.loadtxt('data_for_linear_regression_10000.txt')
 
 #Define range of bins
 
@@ -20,7 +22,7 @@ for number in input_data[:,0]:
 
 #Number and bins and bin size
 #bin_number=int(input('Please enter number of bins '))
-bin_number=5
+bin_number=10
 bin_size=(max-min)/bin_number
 # print(bin_size)
 
@@ -119,7 +121,7 @@ for p,number in enumerate(c_list):
     if lowest>number:
         lowest=number 
         position=p
-print('Lowest Chi Squared', lowest)
+print('Lowest Chi Squared %s' % lowest)
 print(A[position])
 print(B[position])
 
@@ -136,8 +138,7 @@ pl.xlabel('X')
 pl.ylabel('f(X)')
 pl.legend()
 # pl.savefig('data_cs.jpg')
-pl.show()
 
-#************************************
-#TODO
-#Compare Chi Squared Result with Linear Regression
+print("--- %s seconds ---" % (time.time() - start_time))
+
+pl.show()
