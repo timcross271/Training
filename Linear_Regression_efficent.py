@@ -25,7 +25,7 @@ def line_finder (inputlist):
 # Read in data
 ##################################################################################################################
 
-input_data=np.loadtxt('data_for_linear_regression.txt')
+input_data=np.loadtxt('data_for_linear_regression_1000.txt')
 
 
 ##################################################################################################################
@@ -33,7 +33,7 @@ input_data=np.loadtxt('data_for_linear_regression.txt')
 ##################################################################################################################
 
 n_grid=200
-a=np.linspace(-1,-2,n_grid)
+a=np.linspace(-2,-1,n_grid)
 b=np.linspace(4,5,n_grid)
 A,B=np.meshgrid(a,b)
 A_grid=A.flatten()
@@ -68,12 +68,14 @@ y=linear(A_grid[best_fit],B_grid[best_fit],x)
 print(A_grid[best_fit])
 print(B_grid[best_fit])
 
+
+
 ##################################################################################################################
 # Plot data points and theory line
 ##################################################################################################################
 
 pl.plot(x,y)
-#pl.scatter(input_data[:,0],input_data[:,1],label='Data',marker='x',c='g')
+pl.scatter(input_data[:,0],input_data[:,1],label='Data',marker='x',c='g')
 pl.xlabel('X')
 pl.ylabel('f(X)')
 pl.legend()

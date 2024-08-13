@@ -7,7 +7,7 @@ import time
 ##################################################################################################################
 
 # Read in the data
-input_data=np.loadtxt('data_for_linear_regression_10000.txt')
+input_data=np.loadtxt('data_for_linear_regression_1000.txt')
 
 ##################################################################################################################
 # Setup the input parameters
@@ -17,14 +17,14 @@ start_time = time.time()
 # Priors on free parameters
 a_min=-2
 a_max=-1
-b_min=5
-b_max=4
+b_min=4
+b_max=5
 # number of grid points
 n_grid=10
 
 #Number and bins and bin size
 #bin_number=int(input('Please enter number of bins '))
-bin_number=10
+bin_number=30
 
 
 ##################################################################################################################
@@ -209,13 +209,17 @@ print(B_grid[position])
 
 
 y=linear(A_grid[position],B_grid[position],x)
+y_lr=linear(-1.2010050251256281,4.49748743718593,x)
+y_lr=linear(-1.221105527638191,4.50251256281407,x)
 
 pl.title('Chi Squared Fitting to f(x)=ax+b, a='+str(round(A_grid[position],2))+' b='+str(round(B_grid[position],2)))
-#pl.plot(new_data[:,0],new_data[:,1])
 pl.scatter(input_data[:,0],input_data[:,1],marker='x',c='g',alpha=0.5,label='Data')
 pl.plot(x,y,c='k',label='Theory')
 pl.errorbar(new_data[:,0],new_data[:,1],yerr=np.sqrt(new_data[:,2]),c='r',ls='none',markersize=4,marker='o',capsize=5,alpha=0.7,label='Binned data')
-# pl.plot(new_data[:,0],theory_list,c='r')
+pl.plot(x,y_lr,c='y',ls='--')
+# pl.plot(new_data[:,0],theory_list,c='y')
+# pl.plot(new_data[:,0],new_data[:,1],c='y')
+pl.plot()
 pl.xlabel('X')
 pl.ylabel('f(X)')
 pl.legend()
